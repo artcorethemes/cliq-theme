@@ -13,7 +13,7 @@
                                       Y8b 
      
     Theme Name: CLIQ
-    Version: 1.0.1
+    Version: 1.0.2
     Author: Artcore
     More themes: https://www.tumblr.com/themes/by/artcorethemes
     
@@ -104,7 +104,7 @@
 <meta name='text:Google analytics id' content=''/>
 {/block:Hidden}
 
-<link rel="stylesheet" type="text/css" href="http://static.tumblr.com/w8wz9tm/pesnvl2ky/main.min.css">
+<link rel="stylesheet" type="text/css" href="http://static.tumblr.com/w8wz9tm/21nnvy5xm/main.min.css">
 {block:IfEnableGoogleFonts}
 <link href="//fonts.googleapis.com/css?family={block:IfBodyGooglefont}{text:Body Google font}{block:ifBodyfontweight}:{text:Body font weight},{text:Body font weight}italic,{/block:ifBodyfontweight}{block:ifBodyfontweightBold}{block:ifNotBodyfontweight}:{/block:ifNotBodyfontweight}{text:Body font weight bold},{text:Body font weight bold}italic{/block:ifBodyfontweightBold}|{/block:IfBodyGooglefont}{block:IfHeadingsGooglefont}{text:Headings Google font}{block:IfHeadingsFontWeight}:{text:Headings font weight}{/block:IfHeadingsFontWeight}|{/block:IfHeadingsGooglefont}{block:IfTitleGooglefont}{text:Title Google font}{block:IfTitleFontWeight}:{text:Title font weight}{/block:IfTitleFontWeight}{/block:IfTitleGooglefont}&subset=latin{select:Additional google font language}" rel="stylesheet" type="text/css">
 {/block:IfEnableGoogleFonts}
@@ -163,13 +163,13 @@
         font-weight: {block:ifBodyfontweightbold}{text:Body font weight bold}{/block:ifBodyfontweightbold}{block:ifNotBodyfontweightbold}bold{/block:ifNotBodyfontweightbold};
     }
     h1, h2, h3, h4, h5, h6 {
-        font-family: {block:IfEnableGoogleFonts}{block:IfHeadingsGooglefont}'{text:Headings Google font}', {/block:IfHeadingsGooglefont}{/block:IfEnableGoogleFonts}{font:Headings};   
+        font-family: {block:IfEnableGoogleFonts}{block:IfHeadingsGooglefont}'{text:Headings Google font}', {/block:IfHeadingsGooglefont}{/block:IfEnableGoogleFonts}{font:Headings};
         {block:ifHeadingsfontweight}
         font-weight: {text:Headings font weight};
         {/block:ifHeadingsfontweight}
     }
     .title {
-        font-family: {block:IfEnableGoogleFonts}{block:IfTitleGooglefont}'{text:Title Google font}', {/block:IfTitleGooglefont}{/block:IfEnableGoogleFonts}{TitleFont}; 
+        font-family: {block:IfEnableGoogleFonts}{block:IfTitleGooglefont}'{text:Title Google font}', {/block:IfTitleGooglefont}{/block:IfEnableGoogleFonts}{TitleFont};
         font-weight: {block:IfEnableGoogleFonts}{block:IfTitleFontWeight}{text:Title Font Weight}{/block:IfTitleFontWeight}{/block:IfEnableGoogleFonts}{block:IfNotEnableGoogleFonts}{TitleFontWeight}{/block:IfNotEnableGoogleFonts};
         color: {TitleColor};
     }
@@ -188,7 +188,7 @@
         color: {color:Buttons hover label};
     }
     .share-icons {
-        background: {color:Share popup background};    
+        background: {color:Share popup background};
     }
     .triangle {
         border-color: {color:Share popup background} transparent transparent;
@@ -242,7 +242,7 @@
             </div>
             <nav>
                 {block:HasPages}
-                {block:Pages} 
+                {block:Pages}
                 <a href="{URL}">{Label}</a>
                 {/block:Pages}
                 {/block:HasPages}
@@ -275,7 +275,7 @@
                 <span>{lang:Sorry no results for SearchQuery 2}</span>
             </div>
             {/block:NoSearchResults}
-            {/block:SearchPage}   
+            {/block:SearchPage}
             {block:Posts inlineMediaWidth="1200" inlineNestedMediaWidth="1200"} 
             <article class="{PostType}{block:Photoset}set{/block:Photoset}-post{block:RebloggedFrom} reblogged{/block:RebloggedFrom}" id="{PostID}">
                 {block:Text}
@@ -293,15 +293,15 @@
                 {/block:Text}
                 {block:Chat}
                     {block:Title}
-                    <h1>
-                    {block:IndexPage}
-                        <a href="{Permalink}">
-                    {/block:IndexPage}
-                    {Title}
-                    {block:IndexPage}
-                        </a>
-                    {/block:IndexPage}
-                    </h1>
+                        <h1>
+                        {block:IndexPage}
+                            <a href="{Permalink}">
+                        {/block:IndexPage}
+                        {Title}
+                        {block:IndexPage}
+                            </a>
+                        {/block:IndexPage}
+                        </h1>
                     {/block:Title}
                 {/block:Chat}
                 {block:Date}
@@ -346,7 +346,7 @@
                             {block:Caption}
                             <div class="photoset-caption">
                                 <div class="photoset-caption-wrap">
-                                    {Caption} 
+                                    {Caption}
                                 </div>
                             </div>
                             {/block:Caption}
@@ -453,7 +453,7 @@
                                 {block:Photo}
                                 <a class="icon-pinterest" href="http://pinterest.com/pin/create/link/?url={ShortURL}&media={PhotoURL-1280}&description={PhotoAlt}" target="_blank"></a>
                                 {/block:Photo}
-                            </div>
+                            </div> 
                             <div class="triangle"></div>
                         </div>
                     </div>
@@ -520,7 +520,7 @@
             {block:Posts}
             {block:Date}
             {block:IfDisqusShortname}
-            var disqusShortname = '{text:Disqus shortname}'; 
+            var disqusShortname = '{text:Disqus shortname}';
             (function(){
                 var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
                 dsq.src = '//' + disqusShortname + '.disqus.com/embed.js';
