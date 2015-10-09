@@ -8,7 +8,7 @@ $(document).ready(function(){
         }
         $(document).on('click', function(e){
             if ( $(e.target).closest(button).length === 0 ) {
-                if (sharePopup.hasClass("visible")) {
+                if ( sharePopup.hasClass("visible") ) {
                     sharePopup.removeClass("visible");
                     button.removeClass('opacity');
                 }
@@ -16,59 +16,67 @@ $(document).ready(function(){
         });
     });
 });
-$(document).ready(function(){          
+$(document).ready(function(){
     $("body").on("click", ".photoset img", function(e){
-        e.preventDefault();        
+        e.preventDefault();
         var images = $(this).parents(".photoset").find("img"),
             imagesLength = images.length,
             lightboxWidth = imagesLength * 100,
             itemWidth = 100 / imagesLength;
+
         //creating lightbox div
-        $("body").append("<div id='lightbox' style='width: "+lightboxWidth+"%;'><div class='lightbox-prev'></div><div class='lightbox-next'></div><div class='lightbox-inner'></div></div>");
+        $("body").append("<div id='lightbox' style='width: "+lightboxWidth+"%;'>\
+                              <div class='lightbox-prev'></div>\
+                              <div class='lightbox-next'></div>\
+                              <div class='lightbox-inner'></div>\
+                          </div>");
+
+        //inserting images and captions to lightbox div
         var lightboxInner = $(".lightbox-inner");
-        
-        //inserting images and captions to lightbox div             
-        for (i=0; i < imagesLength; i++){   
+        for (var i=0; i < imagesLength; i++){
             var image = $(images[i]),
                 imageSrc = image.attr("src"),
                 caption = image.parent().find(".photoset-caption-wrap").html();
             if(caption){
-                lightboxInner.append("<div class='lightbox-item' style='width: "+itemWidth+"%;'><img src='"+imageSrc+"'><figcaption class='lightbox-caption'>"+caption+"</figcaption></div>");          
+                lightboxInner.append("<div class='lightbox-item' style='width: "+itemWidth+"%;'>\
+                                          <img src='"+imageSrc+"'>
+                                          <figcaption class='lightbox-caption'>"+caption+"</figcaption>\
+                                      </div>");
             } else{
-                lightboxInner.append("<div class='lightbox-item' style='width: "+itemWidth+"%;'><img src='"+imageSrc+"'></div>");
-            };                  
+                lightboxInner.append("<div class='lightbox-item' style='width: "+itemWidth+"%;'>\
+                                          <img src='"+imageSrc+"'>\
+                                      </div>");
+            };
         };
-        
+
         //positioning lightbox with clicked image in middle
         var imageIndex = $.inArray(this, images),
             itemPosition = itemWidth * imageIndex;
         lightboxInner.css("transform", "translateX(-"+itemPosition+"%)");
-        
+
         //adding padding to images with caption
         var lightboxCaptions = $(".lightbox-caption"),
-            captionLength = lightboxCaptions.length;                        
-        for (i=0; i<captionLength; i++){    
+            captionLength = lightboxCaptions.length;
+        for (i=0; i<captionLength; i++){
             var lightboxCaption = $(lightboxCaptions[i]),
                 captionImage = lightboxCaption.parent().find("img"),
                 captionHeight = lightboxCaption.outerHeight();
             captionImage.css("padding-bottom", ""+captionHeight+"px");
-        }                                   
-        
-        //variables for next/prev navigation
+        }
+
         var buttonNext = $(".lightbox-next"),
             buttonPrev = $(".lightbox-prev"),
-            curentIndex = imageIndex;                       
-        
+            curentIndex = imageIndex;
+
         //hiding next/prev buttons if slide is first or last
-        if (curentIndex+1 == imagesLength){             
+        if (curentIndex + 1 == imagesLength){
             buttonNext.css("display", "none");
         };
         if (curentIndex === 0){
             buttonPrev.css("display", "none");
-        };  
-        
-        //clicking next button
-        $(buttonNext).on('click', function(){           
+        };
+
+        $(buttonNext).on('click', function(){
             var nextIndex = curentIndex+1,
                 nextPosition = nextIndex * itemWidth;
             lightboxInner.css("transform", "translateX(-"+nextPosition+"%)");
@@ -76,27 +84,24 @@ $(document).ready(function(){
             nextIndex++;
             if (curentIndex > 0){
                 buttonPrev.css("display", "block");
-            };  
-            if(nextIndex == imagesLength){  
+            };
+            if(nextIndex == imagesLength){
                 buttonNext.css("display", "none");
-            };  
+            };
         });
-        
-        //clicking prev button
-        $(buttonPrev).on('click', function(){           
-            var prevIndex = curentIndex-1,
+        $(buttonPrev).on('click', function(){
+            var prevIndex = curentIndex - 1,
                 prevPosition = prevIndex * itemWidth;
             lightboxInner.css("transform", "translateX(-"+prevPosition+"%)");
             curentIndex--;
             prevIndex--;
             if (curentIndex === 0){
                 buttonPrev.css("display", "none");
-            };  
-            if(prevIndex < imagesLength){   
+            };
+            if(prevIndex < imagesLength){
                 buttonNext.css("display", "block");
-            };  
+            };
         });
-    
         //closing lightbox
         var lightbox = $("#lightbox"),
             items = $(".lightbox-item img, .lightbox-caption, .lightbox-prev, .lightbox-next");
@@ -105,7 +110,7 @@ $(document).ready(function(){
                 lightbox.remove();
             };
         });
-    });    
+    });
 });
 function photoset(){
     $(".photoset:not(.custom-set)").each(function(){
@@ -119,10 +124,10 @@ function photoset(){
         photoset.addClass('custom-set');
         array = [];
         $.each(layout, function(index){
-            var count = this[0]; 
+            var count = this[0];
             for(i=0; i<count; i++){
                 array.push({k:count, v:index});
-            }; 
+            };
         });
         for(i=0; i<photosLength; i++){
             $(figure[i]).addClass('size-'+array[i].k+' line-'+array[i].v+'');
@@ -269,7 +274,7 @@ function loadMore(){
                 $("article").fitVids({
                     customSelector: "iframe[src*='vine'], iframe[src*='tumblr']"
                 });
-            });  
+            });
         }
     });
 };
